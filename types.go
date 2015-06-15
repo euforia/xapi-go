@@ -4,6 +4,11 @@ import (
 	"time"
 )
 
+/*
+	All commented fields are from an older version
+	Currently this will only support XenServer 6.5
+*/
+
 type Session struct {
 	AuthUserName     string            `xmlrpc:"Auth_user_name"`
 	AuthUserSid      string            `xmlrpc:"Auth_user_sid"`
@@ -76,79 +81,95 @@ type VDB struct {
 	Userdevice             string
 }
 
+/* Support for v1.3 */
 type VM struct {
-	ActionsAfterCrash       string `xmlrpc:"Actions_after_crash"`
-	ActionsAfterReboot      string `xmlrpc:"Actions_after_reboot"`
-	ActionsAfterShutdown    string `xmlrpc:"Actions_after_shutdown"`
-	Affinity                string
-	AllowedOperations       []string `xmlrpc:"Allowed_operations"`
-	Appliance               string
-	AttachedPCIs            []string          `xmlrpc:"Attached_PCIs"`
-	BiosStrings             map[string]string `xmlrpc:"Bios_strings"`
-	Blobs                   map[string][]byte
-	BlockedOperations       map[string]string `xmlrpc:"Blocked_operations"`
-	Children                []string
-	Consoles                []string
-	CrashDumps              []string          `xmlrpc:"Crash_dumps"`
-	CurrentOperations       map[string]string `xmlrpc:"Current_operations"`
-	Domarch                 string
-	Domid                   int
-	GuestMetrics            string            `xmlrpc:"Guest_metrics"`
-	HaAlwaysRun             bool              `xmlrpc:"Ha_always_run"`
-	HaRestartPriority       string            `xmlrpc:"Ha_restart_priority"`
-	HVMBootParams           map[string]string `xmlrpc:"HVM_boot_params"`
-	HVMBootPolicy           string            `xmlrpc:"HVM_boot_policy"`
-	HVMShadowMultiplier     float64           `xmlrpc:"HVM_shadow_multiplier"`
-	IsASnapshot             bool              `xmlrpc:"Is_a_snapshot"`
-	IsATemplate             bool              `xmlrpc:"Is_a_template"`
-	IsControlDomain         bool              `xmlrpc:"Is_control_domain"`
-	IsSnapshotFromVmpp      bool              `xmlrpc:"Is_snapshot_from_vmpp"`
-	LastBootCPUFlags        map[string]string `xmlrpc:"Last_boot_CPU_flags"`
-	LastBootedRecord        string            `xmlrpc:"Last_booted_record"`
-	MemoryDynamicMax        int               `xmlrpc:"Memory_dynamic_max"`
-	MemoryDynamicMin        int               `xmlrpc:"Memory_dynamic_min"`
-	MemoryOverhead          int               `xmlrpc:"Memory_overhead"`
-	MemoryStaticMax         int               `xmlrpc:"Memory_static_max"`
-	MemoryStaticMin         int               `xmlrpc:"Memory_static_min"`
-	MemoryTarget            int               `xmlrpc:"Memory_target"`
-	Metrics                 string
-	NameDescription         string `xmlrpc:"Name_description"`
-	NameLabel               string `xmlrpc:"Name_label"`
-	Order                   int
-	OtherConfig             map[string]string `xmlrpc:"Other_config"`
-	Parent                  string
-	PCIBus                  string `xmlrpc:"PCI_bus"`
-	Platform                map[string]string
-	PowerStatus             string `xmlrpc:"Power_status"`
-	ProtectionPolicy        string `xmlrpc:"Protection_policy"`
-	PVArgs                  string `xmlrpc:"PV_args"`
-	PVBootloader            string `xmlrpc:"PV_bootloader"`
-	PVBootloaderArgs        string `xmlrpc:"PV_bootloader_args"`
-	PVKernel                string `xmlrpc:"PV_kernel"`
-	PVLegacyArgs            string `xmlrpc:"PV_legacy_args"`
-	PVRamdisk               string `xmlrpc:"PV_ramdisk"`
-	Recommendations         string
-	ResidentOn              string            `xmlrpc:"Resident_on"`
-	ShutdownDelay           int               `xmlrpc:"Shutdown_delay"`
-	SnapshotInfo            map[string]string `xmlrpc:"Snapshot_info"`
-	SnapshotMetadata        string            `xmlrpc:"Snapshot_metadata"`
-	SnapshotTime            time.Time         `xmlrpc:"Snapshot_time"`
-	StartDelay              int               `xmlrpc:"Start_delay"`
-	SuspendSR               string            `xmlrpc:"Suspend_SR"`
-	SuspendVDI              string            `xmlrpc:"Suspend_VDI"`
-	Tags                    []string
-	TransportableSnapshotID string `xmlrpc:"Transportable_snapshot_id"`
-	UserVersion             int    `xmlrpc:"User_version"`
-	UUID                    string `json:"uuid"`
-	VBDs                    []string
-	VCPUsAtStartup          int               `xmlrpc:"VCPUs_at_startup"`
-	VCPUsMax                int               `xmlrpc:"VCPUs_max"`
-	VCPUsParams             map[string]string `xmlrpc:"VCPUs_params"`
-	Version                 int
-	VGPUs                   []string
-	VIFs                    []string
-	VTPM                    []string
-	XenstoreData            map[string]string `xmlrpc:"Xenstore_data"`
+	ActionsAfterCrash    string `xmlrpc:"actions_after_crash"`
+	ActionsAfterReboot   string `xmlrpc:"actions_after_reboot"`
+	ActionsAfterShutdown string `xmlrpc:"actions_after_shutdown"`
+	//Affinity                string
+	AllowedOperations []string `xmlrpc:"allowed_operations"`
+
+	Appliance    string   `xmlrpc:"appliance"`
+	AttachedPCIs []string `xmlrpc:"attached_PCIs"`
+	//BiosStrings  map[string]string `xmlrpc:"bios_strings"`
+	/*
+		Blobs                   map[string][]byte
+		BlockedOperations       map[string]string `xmlrpc:"Blocked_operations"`
+		Children                []string
+		Consoles                []string
+		CrashDumps              []string          `xmlrpc:"Crash_dumps"`
+		CurrentOperations       map[string]string `xmlrpc:"Current_operations"`
+		Domarch                 string
+		Domid                   int
+		GuestMetrics            string            `xmlrpc:"Guest_metrics"`
+	*/
+	HaAlwaysRun bool `xmlrpc:"ha_always_run"`
+	//HaRestartPriority string `xmlrpc:"ha_restart_priority"`
+	/*
+		HVMBootParams           map[string]string `xmlrpc:"HVM_boot_params"`
+		HVMBootPolicy           string            `xmlrpc:"HVM_boot_policy"`
+	*/
+	HVMShadowMultiplier float64           `xmlrpc:"HVM_shadow_multiplier"`
+	IsASnapshot         bool              `xmlrpc:"is_a_snapshot"`
+	IsATemplate         bool              `xmlrpc:"is_a_template"`
+	IsControlDomain     bool              `xmlrpc:"is_control_domain"`
+	IsSnapshotFromVmpp  bool              `xmlrpc:"is_snapshot_from_vmpp"`
+	LastBootCPUFlags    map[string]string `xmlrpc:"last_boot_CPU_flags"`
+	/*
+		LastBootedRecord        string            `xmlrpc:"Last_booted_record"`
+		MemoryDynamicMax        int               `xmlrpc:"Memory_dynamic_max"`
+		MemoryDynamicMin        int               `xmlrpc:"Memory_dynamic_min"`
+		MemoryOverhead          int               `xmlrpc:"Memory_overhead"`
+		MemoryStaticMax         int               `xmlrpc:"Memory_static_max"`
+		MemoryStaticMin         int               `xmlrpc:"Memory_static_min"`
+		MemoryTarget            int               `xmlrpc:"Memory_target"`
+	*/
+	//Metrics         string `xmlrpc:"metrics"`
+	//NameDescription string `xmlrpc:"name_description"`
+	NameLabel string `xmlrpc:"name_label" json:"name_label`
+	/*
+		Order                   int
+	*/
+	//OtherConfig map[string]string `xmlrpc:"other_config"`
+	/*
+		Parent                  string
+		PCIBus                  string `xmlrpc:"PCI_bus"`
+		Platform                map[string]string
+	*/
+	PowerState string `xmlrpc:"power_state" json:"power_state"`
+	//ProtectionPolicy        string `xmlrpc:"Protection_policy"`
+	//PVArgs       string `xmlrpc:"PV_args"`
+	//PVBootloader string `xmlrpc:"PV_bootloader"`
+	//PVBootloaderArgs string `xmlrpc:"PV_bootloader_args"`
+	//PVKernel string `xmlrpc:"PV_kernel"`
+	/*
+		PVLegacyArgs            string `xmlrpc:"PV_legacy_args"`
+		PVRamdisk               string `xmlrpc:"PV_ramdisk"`
+		Recommendations         string
+		ResidentOn              string            `xmlrpc:"Resident_on"`
+		ShutdownDelay           int               `xmlrpc:"shutdown_delay"`
+		SnapshotInfo            map[string]string `xmlrpc:"Snapshot_info"`
+	*/
+	//SnapshotMetadata string `xmlrpc:"snapshot_metadata"`
+	//SnapshotTime            time.Time `xmlrpc:"snapshot_time"`
+	//StartDelay              int      `xmlrpc:"start_delay"`
+	//SuspendSR               string   `xmlrpc:"suspend_SR"`
+	//SuspendVDI              string   `xmlrpc:"suspend_VDI"`
+	Tags []string `xmlrpc:"tags"`
+	//TransportableSnapshotID string   `xmlrpc:"transportable_snapshot_id"`
+	UserVersion string   `xmlrpc:"user_version"`
+	UUID        string   `xmlrpc:"uuid" json:"uuid"`
+	Version     string   `xmlrpc:"version"`
+	VBDs        []string `xmlrpc:"VBDs"`
+	/*
+		VCPUsAtStartup          int               `xmlrpc:"VCPUs_at_startup"`
+		VCPUsMax                int               `xmlrpc:"VCPUs_max"`
+		VCPUsParams             map[string]string `xmlrpc:"VCPUs_params"`
+		VGPUs                   []string
+		VIFs                    []string
+		VTPM                    []string
+	*/
+	//XenstoreData map[string]string `xmlrpc:"xenstore_data"`
 }
 
 type Event struct {

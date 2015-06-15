@@ -48,6 +48,11 @@ type VMResponse struct {
 	Value VM
 }
 
+type VMsResponse struct {
+	ResponseBase
+	Value map[string]VM
+}
+
 type EventResponse struct {
 	ResponseBase
 	Value Event
