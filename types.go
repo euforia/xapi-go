@@ -10,20 +10,20 @@ import (
 */
 
 type Session struct {
-	AuthUserName     string            `xmlrpc:"Auth_user_name"`
-	AuthUserSid      string            `xmlrpc:"Auth_user_sid"`
-	IsLocalSuperuser bool              `xmlrpc:"Is_local_superuser"`
-	LastActive       time.Time         `xmlrpc:"Last_active"`
-	OtherConfig      map[string]string `xmlrpc:"Other_config"`
-	Parent           string
-	Pool             bool
-	RbacPermissions  []string `xmlrpc:"Rbac_permissions"`
-	Subject          string
-	Tasks            []string
-	ThisHost         string    `xmlrpc:"This_host"`
-	ThisUser         string    `xmlrpc:"This_user"`
-	UUID             string    `xmlrpc:"Uuid"`
-	ValidationTime   time.Time `xmlrpc:"Validation_time"`
+	AuthUserName     string `xmlrpc:"auth_user_name"`
+	AuthUserSid      string `xmlrpc:"auth_user_sid"`
+	IsLocalSuperuser bool   `xmlrpc:"is_local_superuser"`
+	//LastActive       time.Time         `xmlrpc:"last_active"`
+	OtherConfig     map[string]string `xmlrpc:"other_config"`
+	Parent          string
+	Pool            bool
+	RbacPermissions []string `xmlrpc:"rbac_permissions"`
+	Subject         string
+	Tasks           []string
+	ThisHost        string `xmlrpc:"this_host"`
+	ThisUser        string `xmlrpc:"this_user"`
+	UUID            string `xmlrpc:"uuid"`
+	//ValidationTime   time.Time `xmlrpc:"validation_time"`
 }
 
 type VDI struct {
