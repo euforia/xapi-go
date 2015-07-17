@@ -92,6 +92,12 @@ func (client *Client) GetVM(opref string) (vm VM, err error) {
 	return resp.Value, err
 }
 
+func (client *Client) GetVMByName(name string) (refs []string, err error) {
+	var resp StringsResponse
+	err = client.SessionCall(&resp, "VM.get_by_name_label", name)
+	return resp.Value, err
+}
+
 func (client *Client) GetVIF(opref string) (vif VIF, err error) {
 	var resp VIFResponse
 	err = client.SessionCall(&resp, "VIF.get_record", opref)
@@ -166,4 +172,8 @@ func (client *Client) Call(result Response, call string, params ...interface{}) 
 	// }
 
 	return nil
+}
+
+func (client *Client) Close() error {
+	return client.rpc.Close()
 }
