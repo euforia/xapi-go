@@ -4,26 +4,42 @@ import (
 	"time"
 )
 
+type SR struct {
+	//NameDescription string        `json:"name_description"`
+
+	LocalCacheEnabled   bool     `xmlrpc:"local_cache_enabled"`
+	NameLabel           string   `xmlrpc:"name_label" json:"name_label`
+	PhysicalSize        string   `xmlrpc:"physical_size"`
+	PhysicalUtilization string   `xmlrpc:"physical_utilisation"`
+	Shared              bool     `xmlrpc:"shared"`
+	Tags                []string `xmlrpc:"tags"`
+	Type                string   `xmlrpc:"type"`
+	UUID                string   `xmlrpc:"uuid" json:"uuid"`
+	VirtualAllocation   string   `xmlrpc:"virtual_allocation"`
+	VDIs                []string
+	PDBs                []string
+}
+
 /*
 	All commented fields are from an older version
 	Currently this will only support XenServer 6.5
 */
 
 type Session struct {
-	AuthUserName     string `xmlrpc:"auth_user_name"`
-	AuthUserSid      string `xmlrpc:"auth_user_sid"`
-	IsLocalSuperuser bool   `xmlrpc:"is_local_superuser"`
-	//LastActive       time.Time         `xmlrpc:"last_active"`
-	OtherConfig     map[string]string `xmlrpc:"other_config"`
-	Parent          string
-	Pool            bool
-	RbacPermissions []string `xmlrpc:"rbac_permissions"`
-	Subject         string
-	Tasks           []string
-	ThisHost        string `xmlrpc:"this_host"`
-	ThisUser        string `xmlrpc:"this_user"`
-	UUID            string `xmlrpc:"uuid"`
+	AuthUserName     string            `xmlrpc:"auth_user_name"`
+	AuthUserSid      string            `xmlrpc:"auth_user_sid"`
+	IsLocalSuperuser bool              `xmlrpc:"is_local_superuser"`
+	OtherConfig      map[string]string `xmlrpc:"other_config"`
+	Parent           string
+	Pool             bool
+	RbacPermissions  []string `xmlrpc:"rbac_permissions"`
+	Subject          string
+	Tasks            []string
+	ThisHost         string `xmlrpc:"this_host"`
+	ThisUser         string `xmlrpc:"this_user"`
+	UUID             string `xmlrpc:"uuid"`
 	//ValidationTime   time.Time `xmlrpc:"validation_time"`
+	//LastActive       time.Time         `xmlrpc:"last_active"`
 }
 
 type VDI struct {

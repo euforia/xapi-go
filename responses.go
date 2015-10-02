@@ -33,6 +33,11 @@ type SessionResponse struct {
 	Value Session
 }
 
+type SRsResponse struct {
+	ResponseBase
+	Value map[string]SR
+}
+
 type VDIResponse struct {
 	ResponseBase
 	Value VDI
